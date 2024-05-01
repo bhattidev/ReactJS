@@ -7,7 +7,10 @@ export default {
         bgGray: '#d2d6e2',
       },
       boxShadow: {
-        custom: '0px 8px 16px 0px rgba(0, 0, 0, 0.2)',
+        custom: '0px 8px 10px 0px rgba(0, 0, 0, 0.2)',
+      },
+      screens: {
+        smaller: [{ max: '668px', min: '0px' }],
       },
     },
   },
