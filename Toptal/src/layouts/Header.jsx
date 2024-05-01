@@ -1,39 +1,65 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import logo from '../assets/img/logo.png';
+import { useState } from 'react';
 
 export function Header() {
+  const [open, setOpen] = useState(false);
+
+  const handleDropdown = () => {
+    setOpen(!open);
+  };
+
   return (
     <>
-      <div className=' bg-bgGray relative z-10 h-[64px] w-full'>
-        <div className=' px-[5%]'>
+      <div className=' bg-bgGray relative z-10 h-[64px]'>
+        <div className=' px-[5%] flex justify-between'>
           <div className='flex'>
             <img src={logo} className='my-4' alt='logo' width='100px' />
 
             <nav>
               <div id='nav-links' className=' px-3'>
-                <a href='' className='px-3 py-4'>
+                <a href='' className=' py-4'>
                   Top 3%
                 </a>
 
-                <a href='' className='px-3 py-5 relative' id='dropdown'>
+                <button
+                  className='px-3 py-5 relative'
+                  onMouseEnter={handleDropdown}
+                  onMouseLeave={handleDropdown}
+                >
                   Hire Talent
                   <FontAwesomeIcon
                     icon={faArrowDown}
                     className=' size-2 px-1'
                   />
                   <div
-                    id='dropdown-list'
-                    className='flex bg-white left-0 mt-5 absolute'
+                    className={`shadow-custom mt-5 absolute flex-col left-0 z-1 ${
+                      open ? 'flex' : 'hidden'
+                    }`}
                   >
-                    <a href=''>Developers</a>
-                    <a href=''>Designers</a>
-                    <a href=''>Marketing Experts</a>
-                    <a href=''>Product Managers</a>
-                    <a href=''>Project Managers</a>
-                    <a href=''>Finance Experts</a>
+                    <div className='flex flex-col items-start'>
+                      <a href='' className=' px-4 py-3'>
+                        Developers
+                      </a>
+                      <a href='' className='  px-4 py-3'>
+                        Designers
+                      </a>
+                      <a href='' className=' whitespace-nowrap px-4 py-3'>
+                        Marketing Experts
+                      </a>
+                      <a href='' className='whitespace-nowrap px-4 py-3'>
+                        Product Managers
+                      </a>
+                      <a href='' className='whitespace-nowrap px-4 py-3'>
+                        Project Managers
+                      </a>
+                      <a href='' className='whitespace-nowrap px-4 py-3'>
+                        Finance Experts
+                      </a>
+                    </div>
                   </div>
-                </a>
+                </button>
 
                 <a href='' className='px-3 py-5'>
                   Why
@@ -51,7 +77,7 @@ export function Header() {
             </nav>
           </div>
 
-          <div className='float-end flex align-baseline'>
+          <div className='flex'>
             <a href='' className=''>
               Apply as a Freelance
             </a>
