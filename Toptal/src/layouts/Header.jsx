@@ -11,7 +11,6 @@ export function Header() {
   const [hover, setHover] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedAnchor, setSelectedAnchor] = useState(null);
 
   const handleDropdown = () => {
     setHover(!hover);
@@ -20,18 +19,13 @@ export function Header() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleAnchorClick = (anchor) => {
-    setSelectedAnchor(anchor);
+  const handleAnchorClick = () => {
     setIsSidebarOpen(false);
-  };
-
-  const handleCloseAnchor = () => {
-    setSelectedAnchor(null);
   };
 
   return (
     <>
-      {/* Sidebar */}
+      {/*-----------------------  Header Side Bar ---------------- */}
       <div
         className={`fixed z-50 top-[66px] left-0 h-screen bg-gray-200 ${
           isSidebarOpen ? 'w-64' : 'w-0'
@@ -62,7 +56,7 @@ export function Header() {
             >
               <div
                 key={2}
-                className={` py-5 ${
+                className={`py-5 ${
                   activeIndex !== null && activeIndex !== 2 ? 'opacity-50' : ''
                 }`}
                 onMouseEnter={() => setActiveIndex(2)}
@@ -76,7 +70,7 @@ export function Header() {
               </div>
 
               <div
-                className={`shadow-custom absolute flex-col left-0 z-1 ${
+                className={`shadow-custom absolute flex-col left-0 z-1 bg-bgGray ${
                   hover ? 'flex' : 'hidden'
                 }`}
               >
@@ -159,17 +153,29 @@ export function Header() {
         </div>
       </div>
 
-      <div className=' bg-bgGray relative z-10 h-[66px]'>
-        <div className=' px-[5%] flex justify-between text-sm 2xl:justify-center  '>
-          <div className='flex justify-center items-center 2xl:mr-[300px]'>
-            <img src={logo} className='my-5' alt='logo' width='110px' />
+      {/* ------------------------- Header ---------------------------- */}
 
-            <nav className='2xl:block xl:block lg:block md:hidden sm:hidden smaller:hidden'>
-              <div id='nav-links' className=' px-3 flex items-center '>
+      <div className=' bg-bgGray fixed z-50 w-full'>
+        <div className='mx-[5%] flex items-center justify-between 2xl:justify-center'>
+          <FontAwesomeIcon
+            icon={faBars}
+            onClick={handleSidebarToggle}
+            className='px-3 py-5 size-6 mr-2 md:mr-2 sm:block md:block mdx:block lg:hidden  xl:hidden 2xl:hidden'
+          />
+          <div className=' font-small flex items-center justify-between sm:justify-between'>
+            <img
+              src={logo}
+              className='py-5 smaller:mr-0'
+              alt='logo'
+              width='110px'
+            />
+
+            <nav className=' hidden sm:hidden md:hidden mdx:hidden lg:block xl:block 2xl:block 2xl:mr-28'>
+              <div id='nav-links' className=' mx-3'>
                 <a
                   key={1}
                   href=''
-                  className={`py-5 hover:border-b-2 hover:border-blue-700 ${
+                  className={`py-5 mx-3 hover:border-b-2 hover:border-blue-700 ${
                     activeIndex !== null && activeIndex !== 1
                       ? 'opacity-50'
                       : ''
@@ -181,13 +187,13 @@ export function Header() {
                 </a>
 
                 <button
-                  className='px-3 relative hover:border-b-2 hover:border-blue-700'
+                  className='mx-3 py-5  relative '
                   onMouseEnter={handleDropdown}
                   onMouseLeave={handleDropdown}
                 >
                   <div
                     key={2}
-                    className={` py-5 ${
+                    className={` ${
                       activeIndex !== null && activeIndex !== 2
                         ? 'opacity-50'
                         : ''
@@ -202,38 +208,40 @@ export function Header() {
                         hover ? 'rotate-180' : 'rotate-0'
                       }`}
                     />
-                  </div>
-
-                  <div
-                    className={`shadow-custom absolute flex-col left-0 z-1 ${
-                      hover ? 'flex' : 'hidden'
-                    }`}
-                  >
-                    <div className='flex flex-col items-start'>
-                      <a href='' className=' px-4 py-3 hover:text-blue-700'>
+                    <div
+                      className={`shadow-custom absolute bg-bgGray mt-5 flex flex-col items-start justify-normal ${
+                        hover ? 'flex' : 'hidden'
+                      }`}
+                    >
+                      <a href='' className='px-4 py-3 hover:text-blue-700'>
                         Developers
                       </a>
-                      <a href='' className='  px-4 py-3 hover:text-blue-700'>
+
+                      <a href='' className='px-4 py-3 hover:text-blue-700'>
                         Designers
                       </a>
+
                       <a
                         href=''
-                        className=' whitespace-nowrap px-4 py-3 hover:text-blue-700'
+                        className='px-4 py-3 hover:text-blue-700 whitespace-nowrap'
                       >
                         Marketing Experts
                       </a>
+
                       <a
                         href=''
-                        className='whitespace-nowrap px-4 py-3 hover:text-blue-700 '
+                        className=' px-4 py-3 hover:text-blue-700 whitespace-nowrap'
                       >
                         Product Managers
                       </a>
+
                       <a
                         href=''
                         className='whitespace-nowrap px-4 py-3 hover:text-blue-700 '
                       >
                         Project Managers
                       </a>
+
                       <a
                         href=''
                         className='whitespace-nowrap px-4 py-3 hover:text-blue-700 '
@@ -247,7 +255,7 @@ export function Header() {
                 <a
                   key={3}
                   href=''
-                  className={` px-3 py-5 hover:border-b-2 hover:border-blue-700 ${
+                  className={` mx-3 py-5 hover:border-b-2 hover:border-blue-700 ${
                     activeIndex !== null && activeIndex !== 3
                       ? 'opacity-50'
                       : ''
@@ -260,7 +268,7 @@ export function Header() {
                 <a
                   key={4}
                   href=''
-                  className={`px-3 py-5 hover:border-b-2 hover:border-blue-700 ${
+                  className={`mx-3 py-5 hover:border-b-2 hover:border-blue-700 ${
                     activeIndex !== null && activeIndex !== 4
                       ? 'opacity-50'
                       : ''
@@ -273,7 +281,7 @@ export function Header() {
                 <a
                   key={5}
                   href=''
-                  className={`px-3  py-5 hover:border-b-2 hover:border-blue-700 ${
+                  className={`mx-3  py-5 hover:border-b-2 hover:border-blue-700 ${
                     activeIndex !== null && activeIndex !== 5
                       ? 'opacity-50'
                       : ''
@@ -286,7 +294,7 @@ export function Header() {
                 <a
                   key={6}
                   href=''
-                  className={` px-3 py-5 hover:border-b-2 hover:border-blue-700 ${
+                  className={`mx-3 py-5 hover:border-b-2 hover:border-blue-700 ${
                     activeIndex !== null && activeIndex !== 6
                       ? 'opacity-50'
                       : ''
@@ -300,43 +308,23 @@ export function Header() {
             </nav>
           </div>
 
-          <div className='flex justify-center items-center'>
-            <button>
-              <FontAwesomeIcon
-                icon={faBars}
-                onClick={handleSidebarToggle}
-                className='px-3 py-4 size-7 2xl:hidden xl:hidden lg:hidden md:block sm:block smaller:block'
-              />
-              <div>
-                {selectedAnchor && (
-                  <span>
-                    {selectedAnchor}
-                    <button onClick={handleCloseAnchor}>
-                      <FontAwesomeIcon icon={faTimes} />
-                    </button>
-                  </span>
-                )}
-              </div>
-            </button>
+          <div className='hidden sm:hidden md:hidden mdx:hidden lg:block 2xl:block'>
+            <a href='' className='py-5 hover:text-blue-500'>
+              Apply as a Freelance
+            </a>
 
-            <div className='flex items-center align-middle 2xl:block xl:block lg:block md:hidden sm:hidden smaller:hidden'>
-              <a href='' className='px-3 py-4 hover:text-blue-500'>
-                Apply as a Freelance
+            <span className='px-3 py-3'>
+              <a
+                href=''
+                className='bg-green-400 py-2 px-4 rounded-md text-white hover:bg-green-300'
+              >
+                Hire Top Talent
               </a>
+            </span>
 
-              <span className='px-3 py-4'>
-                <a
-                  href=''
-                  className='bg-green-400 py-2 px-4 rounded-md text-white hover:bg-green-300'
-                >
-                  Hire Top Talent
-                </a>
-              </span>
-
-              <a href='' className='px-3 py-4 hover:text-blue-500'>
-                Log In
-              </a>
-            </div>
+            <a href='' className='px-3 py-5 hover:text-blue-500'>
+              Log In
+            </a>
           </div>
         </div>
       </div>
