@@ -33,5 +33,3 @@ function HomeOne() {
 }
 
 export default HomeOne;
-
-/* <div className='absolute bottom-0 h-24 bg-gradient-to-t from-red-300 to-transparent'></div> */
