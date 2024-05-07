@@ -53,7 +53,7 @@ const Slider = () => {
   }, [slides.length]);
 
   return (
-    <div className='relative  max-w-full'>
+    <div className=''>
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -61,16 +61,16 @@ const Slider = () => {
             index === currentIndex ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className='relative lg:mt-32 xl:mt-20 2xl:mt-14'>
+          <div className='relative px:auto lg:mt-32 xl:mt-20 2xl:mt-14'>
             <img
               src={slide.image}
               alt={`Slide ${index + 1}`}
-              className='object-fill lg:max-w-[400px] xl:max-w-[500px] 2xl:max-w-[550px]'
+              className='mr-auto w-[400px] sm:w-[500px] md:[550px]  lg:w-[550px] xl:w-[600px] 2xl:w-[650px]'
             />
-            <div className='absolute bottom-0  z-3 w-full h-24 bg-gradient-to-t from-gray-300 to-transparent'></div>
+            <div className='absolute bottom-0 z-3 w-full h-24 bg-gradient-to-t from-gray-300 to-transparent'></div>
           </div>
 
-          <div className=' bg-white text-center bg-opacity-75 w-[350px] mt-7 mx-auto lg:max-h-40  lg:absolute xl:right-0 2xl:left-0'>
+          <div className='bg-white text-center bg-opacity-75 w-[350px] mt-7 mx-auto lg:max-h-40 lg:absolute xl:right-0 2xl:left-0'>
             <h2 className='text-lg font-semibold text-blue-600'>
               {slide.name}
             </h2>
