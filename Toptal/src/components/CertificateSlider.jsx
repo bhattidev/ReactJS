@@ -51,7 +51,7 @@ const CertificateSlider = () => {
         <p className='min-w-[220px] opacity-70 uppercase mb-4 lg:mb-0'>
           TRUSTED BY LEADING BRANDS AND STARTUPS
         </p>
-        <div className='flex-grow lg:h-auto flex items-center justify-center lg:ml-4'>
+        <div className='flex flex-grow gap-2 lg:h-auto  items-center justify-center lg:ml-4 lg:flex-nowrap xl:flex-nowrap 2xl-flex-nowrap'>
           {currentCertificates.map((certificate, index) => (
             <div
               key={index}

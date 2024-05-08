@@ -1,87 +1,48 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
+import { useState, useEffect } from 'react';
+import image1 from '../assets/img/image1.jpg';
+import image2 from '../assets/img/image2.jpg';
+import image3 from '../assets/img/image3.jpg';
+import image4 from '../assets/img/image4.jpg';
+import image5 from '../assets/img/image5.jpg';
 
-const ImageGallery = ({ images }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [localImages, setLocalImages] = useState([]);
+const images = [image1, image2, image3, image4, image5];
+
+const ImageSlider = () => {
+  const [currentimages, setCurrentimages] = useState(images);
+  const [sliderHeight, setSliderHeight] = useState('auto');
 
   useEffect(() => {
+    // Calculate the maximum height of the slider content
+    const maxCertHeight = Math.max(
+      ...currentimages.map((cert) => cert.length * 10)
+    ); // Adjust multiplier as needed
+    setSliderHeight(maxCertHeight > 200 ? 200 : maxCertHeight); // Set maximum height to 200px or the calculated max height
+
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length + localImages.length - 1
-          ? 0
-          : prevIndex + 1
-      );
+      // Rotate the images array to the left
+      const rotatedimages = [...currentimages.slice(1), currentimages[0]];
+      setCurrentimages(rotatedimages);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [currentIndex, images.length, localImages.length]);
-
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length + localImages.length - 1
-        ? 0
-        : prevIndex + 1
-    );
-  };
-
-  const goToPrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length + localImages.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleImageUpload = (event) => {
-    const files = event.target.files;
-    const newImages = [];
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        newImages.push(e.target.result);
-        if (newImages.length === files.length) {
-          setLocalImages((prevImages) => [...prevImages, ...newImages]);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  }, [currentimages]);
 
   return (
-    <div className="relative">
-      <div className="flex overflow-x-auto">
-        {[...images, ...localImages].map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Image ${index}`}
-            className={`flex-none w-full h-full transition-transform duration-500 ${
-              index === currentIndex ? 'opacity-100' : 'opacity-0 -translate-x-full'
-            }`}
-          />
-        ))}
+    <div className='bg-white 2xl:mx-auto 2xl:w-max text-center'>
+      <div
+        className={`m-[5%] overflow-hidden px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row justify-between items-center max-h-${sliderHeight}`}
+      >
+        <div className='py-5 flex items-center gap-2 justify-center flex-wrap flex-grow lg:h-auto lg:flex-nowrap xl:flex-nowrap 2x:flex-nowrap  lg:ml-4'>
+          {currentimages.map((images, index) => (
+            <div key={index} className='hover:border-2 hover:border-blue-800'>
+              <img src={images} alt={`Image ${index + 1}`} className='' />
+              <p className='text-center'>Intoduction</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <button
-        onClick={goToPrevious}
-        className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full text-white"
-      >
-        <ChevronLeftIcon className="h-6 w-6" />
-      </button>
-      <button
-        onClick={goToNext}
-        className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full text-white"
-      >
-        <ChevronRightIcon className="h-6 w-6" />
-      </button>
-      <input
-        type="file"
-        accept="image/*"
-        multiple
-        onChange={handleImageUpload}
-        className="absolute bottom-4 left-4"
-      />
     </div>
   );
 };
 
-export default ImageGallery;
+export default ImageSlider;
