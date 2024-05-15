@@ -1,28 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const certificates = [
-  'Certificate 1',
-  'Certificate 2',
-  'Certificate 3',
-  'Certificate 4',
-  'Certificate 5',
-  'Certificate 6',
-  'Certificate 7',
+  "Certificate 1",
+  "Certificate 2",
+  "Certificate 3",
+  "Certificate 4",
+  "Certificate 5",
+  "Certificate 6",
+  "Certificate 7",
 ];
 
 const colors = [
-  'bg-red-200',
-  'bg-blue-200',
-  'bg-green-200',
-  'bg-yellow-200',
-  'bg-purple-200',
-  'bg-indigo-200',
-  'bg-pink-200',
+  "bg-red-200",
+  "bg-blue-200",
+  "bg-green-200",
+  "bg-yellow-200",
+  "bg-purple-200",
+  "bg-indigo-200",
+  "bg-pink-200",
 ];
 
 const CertificateSlider = () => {
   const [currentCertificates, setCurrentCertificates] = useState(certificates);
-  const [sliderHeight, setSliderHeight] = useState('auto');
+  const [sliderHeight, setSliderHeight] = useState("auto");
 
   useEffect(() => {
     // Calculate the maximum height of the slider content
@@ -44,19 +44,15 @@ const CertificateSlider = () => {
   }, [currentCertificates]);
 
   return (
-    <div className=' bg-gray-200 2xl:mx-auto 2xl:w-max'>
+    <div className=" bg-gray-200  flex justify-center items-center">
       <div
-        className={`m-[5%] overflow-hidden px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row justify-between items-center max-h-${sliderHeight}`}
-      >
-        <p className='min-w-[220px] opacity-70 uppercase mb-4 lg:mb-0'>
+        className={`my-10 flex flex-col justify-around items-center flex-wrap max-h-${sliderHeight}`}>
+        <p className="text-center p-5">
           TRUSTED BY LEADING BRANDS AND STARTUPS
         </p>
-        <div className='flex flex-grow gap-2 lg:h-auto  items-center justify-center lg:ml-4 lg:flex-nowrap xl:flex-nowrap 2xl-flex-nowrap'>
+        <div className="flex shadow flex-grow gap-2 flex-wrap justify-center items-center">
           {currentCertificates.map((certificate, index) => (
-            <div
-              key={index}
-              className={`w-full sm:w-auto h-auto p-4 flex items-center justify-center border-2 ${colors[index]} mb-4 lg:mb-0`}
-            >
+            <div key={index} className={`p-5 ${colors[index]}`}>
               {certificate}
             </div>
           ))}
