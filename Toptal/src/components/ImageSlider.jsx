@@ -30,9 +30,9 @@ const ImageSlider = () => {
   }, [currentimages]);
 
   return (
-    <div className="bg-white flex justify-center items-center ">
+    <div className="bg-white flex justify-center items-center">
       <div
-        className={`max-w-[1200px] p-10 flex gap-5 overflow-hidden max-h-${sliderHeight}`}>
+        className={`max-w-[1200px] w-full p-10 flex gap-5 justify-center overflow-hidden max-h-${sliderHeight}`}>
         {currentimages.map((images, index) => (
           <div
             key={index}
