@@ -2,7 +2,7 @@ import React from 'react';
 
 function Sidebar() {
 	return (
-		<div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark max-w-[280px]">
+		<div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark max-w-[280px] min-h-[650px]">
 			<a
 				href="/"
 				className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
