@@ -1,27 +1,17 @@
 import React from 'react';
 
-function Post() {
+function Post({ post }) {
 	return (
 		<div>
 			<div
-				class="card"
-				className="w-[18rem]">
-				<img
-					src="..."
-					class="card-img-top"
-					alt="..."
-				/>
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">
-						Some quick example text to build on the card title and make up the
-						bulk of the card's content.
-					</p>
-					<a
-						href="#"
-						class="btn btn-primary">
-						Go somewhere
-					</a>
+				key={post.id}
+				className="card w-[18rem] mx-5 my-12 p-2 border">
+				<div className="card-body">
+					<h5 className="card-title">{post.title}</h5>
+					<p className="card-text">{post.body}</p>
+					{post.tags.map((tag) => (
+						<span className="badge text-bg-primary inline m-0.5">{tag}</span>
+					))}
 				</div>
 			</div>
 		</div>
