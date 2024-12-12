@@ -1,11 +1,13 @@
-import { useState } from 'react';
-
 import './App.css';
 
-function App() {
-	const [count, setCount] = useState(0);
+import Layout from './layouts/Layout';
 
-	return <></>;
+function App() {
+	return (
+		<div className="flex justify-center items-center">
+			<Layout />
+		</div>
+	);
 }
 
 export default App;
