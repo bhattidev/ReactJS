@@ -1,55 +1,100 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
 
 function CreatePost() {
+	const { addPost } = useContext(PostListProvid);
+	const userId = useRef();
+	const postTitle = useRef();
+	const postBody = useRef();
+	const reactions = useRef();
+	const tags = useRef();
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+	};
 	return (
 		<div>
-			<form>
+			<form
+				className="w-[80%] p-2 m-5"
+				onSubmit={handleSubmit}>
 				<div className="mb-3">
 					<label
-						htmlFor="exampleInputEmail1"
-						className="htmlForm-label">
-						Email address
+						htmlFor="userId"
+						className="form-label">
+						User Id
 					</label>
 					<input
-						type="email"
-						className="htmlForm-control border"
-						id="exampleInputEmail1"
-						aria-describedby="emailHelp"
+						type="text"
+						ref={userId}
+						className="form-control border"
+						id="userId"
+						placeholder="Enter User Id"
 					/>
-					<div
-						id="emailHelp"
-						className="htmlForm-text">
-						We'll never share your email with anyone else.
-					</div>
+				</div>
+
+				<div className="mb-3">
+					<label
+						htmlFor="title"
+						className="form-label">
+						Post Title
+					</label>
+					<input
+						type="text"
+						ref={postTitle}
+						className="form-control border"
+						id="title"
+						placeholder="How are you feeling today..."
+					/>
+				</div>
+
+				<div className="mb-3">
+					<label
+						htmlFor="body"
+						className="form-label">
+						Post Content
+					</label>
+					<textarea
+						type="text"
+						ref={postBody}
+						rows="3"
+						className="form-control border"
+						id="body"
+						placeholder="Tell us more about it."
+					/>
+				</div>
+
+				<div className="mb-3">
+					<label
+						htmlFor="reactions"
+						className="form-label">
+						Number of Reactions
+					</label>
+					<input
+						type="text"
+						ref={reactions}
+						className="form-control border"
+						id="reactions"
+						placeholder="Please enter tags using space"
+					/>
 				</div>
 				<div className="mb-3">
 					<label
-						htmlFor="exampleInputPassword1"
-						className="htmlForm-label">
-						Password
+						htmlFor="tags"
+						className="form-label">
+						Hash Tags
 					</label>
 					<input
-						type="password"
-						className="htmlForm-control border"
-						id="exampleInputPassword1"
+						type="text"
+						ref={tags}
+						className="form-control border"
+						id="tags"
+						placeholder="Enter tags using space."
 					/>
 				</div>
-				<div className="mb-3 htmlForm-check">
-					<input
-						type="checkbox"
-						className="htmlForm-check-input border"
-						id="exampleCheck1"
-					/>
-					<label
-						className="htmlForm-check-label"
-						htmlFor="exampleCheck1">
-						Check me out
-					</label>
-				</div>
+
 				<button
 					type="submit"
 					className="btn btn-primary">
-					Submit
+					Post
 				</button>
 			</form>
 		</div>

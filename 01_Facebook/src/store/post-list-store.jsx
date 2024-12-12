@@ -1,28 +1,20 @@
 import { createContext, useReducer } from 'react';
 
-// Create a context
 export const PostList = createContext({
 	postList: [],
 	addPost: () => {},
 	deletePost: () => {},
 });
 
-// Reducer function to handle actions
 const postListReducer = (currPostList, action) => {
 	switch (action.type) {
 		case 'DELETE_POST':
-			// Filter out the post with the given ID
 			return currPostList.filter((post) => post.id !== action.payload.postId);
-		case 'ADD_POST':
-			// Add a new post to the list
-			return [...currPostList, action.payload.newPost];
 		default:
-			// Return the current state for unrecognized actions
 			return currPostList;
 	}
 };
 
-// Default post list
 const DEFAULT_POST_LIST = [
 	{
 		id: 1,
@@ -42,14 +34,12 @@ const DEFAULT_POST_LIST = [
 	},
 ];
 
-// Context provider component
 const PostListProvider = ({ children }) => {
 	const [postList, dispatchPostList] = useReducer(
 		postListReducer,
 		DEFAULT_POST_LIST
 	);
 
-	// Function to add a new post
 	const addPost = (newPost) => {
 		dispatchPostList({
 			type: 'ADD_POST',
@@ -57,7 +47,6 @@ const PostListProvider = ({ children }) => {
 		});
 	};
 
-	// Function to delete a post by ID
 	const deletePost = (postId) => {
 		dispatchPostList({
 			type: 'DELETE_POST',
