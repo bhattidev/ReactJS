@@ -1,39 +1,28 @@
 import React from 'react';
 import toptal_logo from '../assets/images/header/images.avif';
+import { FaBars } from 'react-icons/fa';
+
+import NavLinks from '../nav/NavLinks';
 
 const Header = () => {
 	return (
-		<div className="bg-gray-300 flex justify-between items-center gap-20 px-20 text-sm">
+		<div className="bg-gray-300 flex justify-between items-center px-5 xl:px-10 text-sm ">
 			<div className="flex justify-between items-center ">
 				<img
 					src={toptal_logo}
 					alt="Toptal logo"
-					className="mr-10"
+					className="mr-3 xl:mr-10"
 					height="28px"
 					width="116px"
 				/>
-				<ul className="flex justify-center items-center gap-2 -ml-1">
-					<li className="">
-						<a href="">Top 3%</a>
-					</li>
-					<li>Hire Talent</li>
-					<li>
-						<a href="">Consulting & Services</a>
-					</li>
-					<li>
-						<a href="">Clients</a>
-					</li>
-					<li>
-						<a href="">Blog</a>
-					</li>
-					<li>
-						<a href="">About Us</a>
-					</li>
-				</ul>
+				<NavLinks />
 			</div>
-			<div className="flex justify-center items-center gap-3 min-w-[768px] ml-auto ">
+
+			<div className="flex justify-end items-center gap-3 ">
 				<div>Apply as a Freelance</div>
-				<div>Hire Toptal</div>
+				<div className="bg-green-400 rounded py-2 px-6 text-white font-semibold">
+					Hire Top Talent
+				</div>
 				<div>Login</div>
 			</div>
 		</div>

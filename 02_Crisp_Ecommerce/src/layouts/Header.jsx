@@ -7,7 +7,7 @@ import { HiOutlineShoppingBag } from 'react-icons/hi';
 function Header() {
 	return (
 		<>
-			<div className="flex justify-between bg-black text-white p-5">
+			<div className="flex justify-between bg-black text-white text-xs p-5">
 				<div>
 					<img
 						src={logo}
@@ -15,19 +15,19 @@ function Header() {
 					/>
 				</div>
 				<div className="flex justify-center items-center">
-					<ul className="flex justify-center items-center gap-3 list-none">
+					<ul className="flex justify-center items-center gap-3 list-none font-bold">
 						<li className=""> HOME</li>
 						<li>
-							<a href=""></a> SHOP
+							<a href="">SHOP</a>
 						</li>
 						<li>
-							<a href=""></a> BLOG
+							<a href="">BLOG</a>
 						</li>
 						<li>
-							<a href=""></a> SALE
+							<a href="">SALE</a>
 						</li>
 						<li>
-							<a href=""></a> CONTACT US
+							<a href="">CONTACT US</a>
 						</li>
 						<li className="flex justify-center items-center gap-1">
 							<FaSearch />
@@ -36,7 +36,7 @@ function Header() {
 					</ul>
 				</div>
 				<div className="flex items-center justify-center gap-6">
-					<div className="flex justify-center items-center gap-3">
+					<div className="flex justify-center items-center gap-3 font-bold">
 						<div>Sing In</div>
 						<div>Create an Account</div>
 					</div>
