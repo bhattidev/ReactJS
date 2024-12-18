@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import toptal_logo from '../assets/images/header/images.avif';
 import NavLinks from '../nav/NavLinks';
-import HireTopTalent from '../components/HireTopTalent';
-import IconToggle from '../components/IconToggle';
+import HireTopTalent from '../components/Header/HireTopTalent';
+import IconToggle from '../components/Header/IconToggle';
 
 const Header = () => {
 	const [isNavVisible, setIsNavVisible] = useState(false);
@@ -30,7 +30,7 @@ const Header = () => {
 				</div>
 
 				{/* Right Section */}
-				<div className="flex justify-end items-center gap-3 opacity-80 cursor-pointer delay-100">
+				<div className="flex justify-end items-center gap-3 opacity-80 cursor-pointer">
 					<div className="hidden lg:block py-5 hover:text-blue-600">
 						Apply as a Freelance
 					</div>

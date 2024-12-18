@@ -36,12 +36,11 @@ function NavLinks() {
 							}`}
 						/>
 					</div>
-					<div
-						className={`transition-all duration-300 ease-in-out overflow-hidden ${
-							isVisible ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-						}`}>
-						<NavTalent />
-					</div>
+					{isVisible && (
+						<div className="transition-all duration-150">
+							<NavTalent />
+						</div>
+					)}
 				</li>
 
 				{/* Consulting & Services */}
