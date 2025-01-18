@@ -6,15 +6,32 @@ import image4 from '../../assets/images/DeveloperImages/images4.avif';
 import image5 from '../../assets/images/DeveloperImages/images5.avif';
 import image6 from '../../assets/images/DeveloperImages/images6.avif';
 import image7 from '../../assets/images/DeveloperImages/images7.avif';
+
+import design from '../../assets/images/Skills/design.svg';
+import developers from '../../assets/images/Skills/developers.svg';
+import execute from '../../assets/images/Skills/execute.svg';
+import finance from '../../assets/images/Skills/finance.svg';
+import marketing from '../../assets/images/Skills/marketing.svg';
+import product from '../../assets/images/Skills/product.svg';
+import projects from '../../assets/images/Skills/projects.svg';
+
 import mapImage from '../../assets/images/map/map1.avif';
 
 function HeroData() {
+	const data = [
+		design,
+		developers,
+		execute,
+		finance,
+		marketing,
+		product,
+		projects,
+	];
 	const devData = [
 		{
 			id: 1,
 			name: 'John Doe',
 			src: image1,
-
 			rank: 'Senior Developer',
 			company: 'Tech Corp',
 		},
@@ -81,8 +98,8 @@ function HeroData() {
 						<p className="text-blue-700 text-sm font-bold">{item.name}</p>
 						<h2 className="text-green-600 flex text-xs">
 							<svg
-								width="16"
-								height="16"
+								width="13"
+								height="13"
 								viewBox="0 0 16 16"
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg"
