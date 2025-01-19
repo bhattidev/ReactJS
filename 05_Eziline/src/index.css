@@ -13,3 +13,12 @@ body {
 header {
 	font-family: 'Source Sans Pro';
 }
+
+.bg-gradient {
+	background: rgb(249, 100, 46);
+	background: radial-gradient(
+		circle,
+		rgba(249, 100, 46, 0.7203256302521008) 0%,
+		rgba(43, 71, 106, 1) 100%
+	);
+}
